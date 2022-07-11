@@ -22,9 +22,9 @@
             <nav>
                 <ul class="lista-nav">
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="missao.php">Missão</a></li>
-                    <li><a href="visao.php">Visão</a></li>
-                    <li><a href="valores.php">Valores</a></li>
+                    <li><a href="empresa.php?categoria=missao">Missão</a></li>
+                    <li><a href="empresa.php?categoria=visao">Visão</a></li>
+                    <li><a href="empresa.php?categoria=valores">Valores</a></li>
                     <li><a href="fale_conosco.php">Fale Conosco</a></li>
                     <li id="burguer">&#9776;</li>
                 </ul>
