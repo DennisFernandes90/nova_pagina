@@ -1,5 +1,5 @@
 <?php
-    include "header.php";
+    require_once("templates/header.php");
 
 
     $categoria = $_GET["categoria"];
@@ -26,7 +26,7 @@
     <div class="container">
 
         <div class="breadcrumbs">
-            <a href="index.php">Home</a>
+            <a href="<?= $BASE_URL ?>">Home</a>
             <span>></span>
             <span><?php echo $empresa[$categoria]["nome"]; ?></span>
         </div>
@@ -47,5 +47,5 @@
 
 
     <?php
-    include "footer.php";
+    require_once("templates/footer.php");
     ?>

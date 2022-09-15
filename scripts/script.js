@@ -47,7 +47,7 @@ $(document).ready(function(){
         var regiao = $("#regiao").val();
 
         for(var i = 0; i < estados[regiao].length; i++){
-            $("#estado").append("<option>" + estados[regiao][i] + "</option>");
+            $("#estado").append("<option value='" + estados[regiao][i] + "'>" + estados[regiao][i] + "</option>");
         }
 
         // $(".logo").html(regiao);
