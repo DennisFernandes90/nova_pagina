@@ -1,7 +1,9 @@
 <?php 
 
     require_once("globals.php");
+    require_once("db.php");
     
+    $resultMessage = "";
 ?>
 
 <!DOCTYPE html>
@@ -36,6 +38,12 @@
             </nav>
     
         </header>
+        
+
     </div>
+    
+    <div class="container">
 
-
+        <?php if($resultMessage != ""){ ?>
+            <div class="msg-container sucesso">Testando</div>
+        <?php } ?>

@@ -2,7 +2,7 @@
     require_once("templates/header.php");
 ?>
 
-    <div class="container">
+    
 
         <div class="capa">
 
@@ -20,7 +20,7 @@
             </div>
         </div>
    
-    </div>
+    
 
 
 <?php

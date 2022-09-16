@@ -2,7 +2,7 @@
     require_once("templates/header.php");
 ?>
 
-    <div class="container">
+    
 
         <div class="breadcrumbs">
             <a href="index.html">Home</a>
@@ -15,6 +15,8 @@
 
             <p>Escreva suas dúvidas, críticas e sugestões</p>
 
+            <input type="hidden" name="type" value="msg">
+
             <div class="input-wrapper">
                 <label for="mensagem">Mensagem:</label>
                 <textarea name="mensagem" id="mensagem" cols="30" rows="5" placeholder="Deixe aqui suas perguntas, críticas e sugestões" required></textarea>
@@ -25,7 +27,7 @@
             
         </form>
    
-    </div>
+    
 
 
     <?php

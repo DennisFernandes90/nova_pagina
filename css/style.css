@@ -71,6 +71,30 @@ nav{
     color: rgb(100, 100, 100);
 }
 
+/* mensagem de erro / sucesso */
+
+.msg-container{
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.erro{
+    border: 1px solid #cf3429;
+    background-color: #f5958e;
+    color: #cf3429;   
+}
+
+.sucesso{
+    border: 1px solid #27872e;
+    background-color: #93f599;
+    color: #27872e;
+}
+
 /* conteudo */
 
 .breadcrumbs{
@@ -147,6 +171,16 @@ footer{
 
 /* Formatação formulário */
 
+.forms-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#form-login, #form-cadastro{
+    width: 40%;
+}
+
 #contact-us{
     margin-bottom: 20px;
 }
@@ -168,7 +202,7 @@ footer{
 }
 
 #form-btn{
-    margin-top: 10px;
+    margin-top: 30px;
     margin-bottom: 10px;
     width: 25%;
     padding: 10px 15px;
@@ -287,6 +321,17 @@ footer{
 
     .lista-nav li{
         margin-left: 0;
+    }
+
+    .forms-container{
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    #form-login, #form-cadastro{
+        width: 100%;
+        
     }
 }
 

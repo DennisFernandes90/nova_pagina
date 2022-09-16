@@ -23,7 +23,7 @@
     );
 ?>
 
-    <div class="container">
+    
 
         <div class="breadcrumbs">
             <a href="<?= $BASE_URL ?>">Home</a>
@@ -43,7 +43,7 @@
 
 
    
-    </div>
+    
 
 
     <?php
