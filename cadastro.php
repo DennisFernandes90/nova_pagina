@@ -70,7 +70,7 @@
         
                     <div class="input-wrapper">
                         <label for="sexo">Região: </label>
-                        <select name="sexo" id="sexo" required>
+                        <select name="sexo" id="sexo">
         
                             <option value="" selected disabled>Selecione seu sexo</option>
         
@@ -83,7 +83,7 @@
         
                     <div class="input-wrapper">
                         <label for="regiao">Região: </label>
-                        <select name="regiao" id="regiao" required>
+                        <select name="regiao" id="regiao">
         
                             <option value="" selected disabled>Selecione uma Região</option>
         
@@ -102,7 +102,7 @@
         
                     <div class="input-wrapper">
                         <label for="estado">Estado: </label>
-                        <select name="estado" id="estado" required>
+                        <select name="estado" id="estado">
         
                             <option value="" selected disabled>Selecione um Estado</option>
         

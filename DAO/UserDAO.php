@@ -1,13 +1,18 @@
 <?php
 
     require_once("models/User.php");
+    require_once("models/Validations.php");
 
     class UserDAO implements UserDAOInterface {
 
         private $conn;
+        private $url;
+        private $validation;
 
-        public function __construct(PDO $conn){
+        public function __construct(PDO $conn, $url){
             $this->conn = $conn;
+            $this->url = $url;
+            $this->validation = new Validations($url);
         }
 
         //Constói um objeto user com base em um array
@@ -73,6 +78,44 @@
             }else{
                 return false;
             }
+
+        }
+
+        // Cria uma variável de sessão com o email do usuário
+        public function setUserToSession(User $user){
+
+           $_SESSION["user"] = $user->get_email();
+
+        }
+
+        //Cria um objeto de usuário com base no email que está na variável de sessão
+        public function verifyUser(){
+            if(!empty($_SESSION["user"])){
+                $email = $_SESSION["user"];
+
+                $user = $this->searchEmail($email);
+
+                if($user){
+                    return $user;
+                }else{
+                    $this->validation->setMessage("Usuário não encontrado", "erro", "back");
+                }
+            }
+        }
+
+        //Recebe como parametro o email e senha, caso a senha informada seja compativel com o hash cadastrado cria um objeto do usuário
+        public function authenticateUser($email, $senha){
+
+            $user = $this->searchEmail($email);
+
+            if(password_verify($senha, $user->get_senha())){
+                return $user;
+            }else{
+                $this->validation->setMessage("Usuário ou senha incorretos, por favor tente de novo.", "erro", "back");
+            }
+
+
+
 
         }
     }

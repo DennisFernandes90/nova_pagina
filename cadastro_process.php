@@ -3,9 +3,12 @@
     require_once("globals.php");
     require_once("db.php");
     require_once("models/User.php");
+    require_once("models/Validations.php");
     require_once("DAO/UserDAO.php");
 
-    $userDao = new UserDAO($conn);
+
+    $validations = new Validations($BASE_URL);
+    $userDao = new UserDAO($conn, $BASE_URL);
 
     $type = filter_input(INPUT_POST, "type");
 
@@ -27,33 +30,56 @@
 
             if($verificaEmail){
                 // Aqui fazer uma classe que exiba mensagens de erro/ sucesso e redirecione o usuário para uma página
-                echo "Email ja cadastrado";
+                $validations->setMessage("Usuário já cadastrado, favor tente outro usuário!" , "erro", "back");
+                
             }else{
 
-                if($senha === $senha2){
-                    //verificar se as senhas batem, incluir uma restrição de tamanho de caracteres na 
+                if(strlen($senha) < 6){
+                    $validations->setMessage("A senha deve ter pelo menos 6 caracteres!" , "erro", "back");
+                }else{
+
+                    if($senha === $senha2){
+                        //verificar se as senhas batem, incluir uma restrição de tamanho de caracteres na 
+        
+                        $user = new User();
+        
+                        $user->set_email($email);
+                        $user->set_nome($nome);
+                        $user->set_sobrenome($sobrenome);
+        
+                        $senhaFinal = $user->generatePassword($senha);
+                        $user->set_senha($senhaFinal);
+        
+                        $user->set_sexo($sexo);
+                        $user->set_regiao($regiao);
+                        $user->set_estado($estado);
+        
+                        $userDao->createUser($user);
     
-                    $user = new User();
+                        $userDao->setUserToSession($user);
     
-                    $user->set_email($email);
-                    $user->set_nome($nome);
-                    $user->set_sobrenome($sobrenome);
-    
-                    $senhaFinal = $user->generatePassword($senha);
-                    $user->set_senha($senhaFinal);
-    
-                    $user->set_sexo($sexo);
-                    $user->set_regiao($regiao);
-                    $user->set_estado($estado);
-    
-                    $userDao->createUser($user);
-    
+                        $validations->setMessage("Cadastro efetuado com sucesso!", "sucesso");
+        
+                    }else{
+                        $validations->setMessage("Senha de confirmação diferente!" , "erro", "back");
+                    }
                 }
+
             }
 
         }
         
 
     }else if($type === "login"){
+
+        $email = filter_input(INPUT_POST, "email");
+        $senha = filter_input(INPUT_POST, "senha");
+
+        $user = $userDao->authenticateUser($email, $senha);
+
+        if($user){
+            $userDao->setUserToSession($user);
+            $validations->setMessage("Login efetuado com sucesso!", "sucesso");
+        }
 
     }

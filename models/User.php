@@ -94,4 +94,7 @@
         public function buildUser($data);
         public function createUser(User $user);
         public function searchEmail($email);
+        public function setUserToSession(User $user);
+        public function verifyUser();
+        public function authenticateUser($email, $senha);
     }

@@ -2,8 +2,27 @@
 
     require_once("globals.php");
     require_once("db.php");
+    require_once("models/Validations.php");
+    require_once("models/User.php");
+    require_once("DAO/UserDAO.php");
+
+    $userDao = new UserDAO($conn, $BASE_URL);
+
+    $validations = new Validations($BASE_URL);
     
-    $resultMessage = "";
+    $resultMessage = $validations->getMessage();
+
+    $validations->clearMessage();
+
+    $userData = $userDao->verifyUser();
+
+    // if($_SESSION["user"] != ""){
+
+    //     $userData = $userDao->searchEmail($_SESSION["user"]);
+    // }
+
+
+    // print_r($_SESSION);
 ?>
 
 <!DOCTYPE html>
@@ -26,17 +45,30 @@
                 <h2><a href="<?= $BASE_URL ?>">MEU LOGO</a></h2>
             </div>
     
-            <nav>
-                <ul class="lista-nav">
-                    <li><a href="<?= $BASE_URL ?>cadastro.php">Logar / Cadastrar</a></li>
-                    <li><a href="<?= $BASE_URL ?>empresa.php?categoria=missao">Missão</a></li>
-                    <li><a href="<?= $BASE_URL ?>empresa.php?categoria=visao">Visão</a></li>
-                    <li><a href="<?= $BASE_URL ?>empresa.php?categoria=valores">Valores</a></li>
-                    <li><a href="<?= $BASE_URL ?>fale_conosco.php">Fale Conosco</a></li>
-                    <li id="burguer">&#9776;</li>
-                </ul>
-            </nav>
-    
+                <?php if($userData){ ?>
+                    <nav>
+                        <ul class="lista-nav">
+                            <li><a href="#">Perfil - <?= $userData->get_nome() ?></a></li>
+                            <li><a href="<?= $BASE_URL ?>empresa.php?categoria=missao">Missão</a></li>
+                            <li><a href="<?= $BASE_URL ?>empresa.php?categoria=visao">Visão</a></li>
+                            <li><a href="<?= $BASE_URL ?>empresa.php?categoria=valores">Valores</a></li>
+                            <li><a href="<?= $BASE_URL ?>fale_conosco.php">Fale Conosco</a></li>
+                            <li><a href="<?= $BASE_URL ?>logout.php">Sair</a></li>
+                            <li id="burguer">&#9776;</li>
+                        </ul>
+                    </nav>
+                    <?php }else{ ?>
+                        <nav>
+                            <ul class="lista-nav">
+                                <li><a href="<?= $BASE_URL ?>cadastro.php">Logar / Cadastrar</a></li>
+                                <li><a href="<?= $BASE_URL ?>empresa.php?categoria=missao">Missão</a></li>
+                                <li><a href="<?= $BASE_URL ?>empresa.php?categoria=visao">Visão</a></li>
+                                <li><a href="<?= $BASE_URL ?>empresa.php?categoria=valores">Valores</a></li>
+                                <li><a href="<?= $BASE_URL ?>fale_conosco.php">Fale Conosco</a></li>
+                                <li id="burguer">&#9776;</li>
+                            </ul>
+                        </nav>
+                    <?php } ?>            
         </header>
         
 
@@ -45,5 +77,5 @@
     <div class="container">
 
         <?php if($resultMessage != ""){ ?>
-            <div class="msg-container sucesso">Testando</div>
+            <div class="msg-container <?= $resultMessage["type"] ?>"><?= $resultMessage["msg"] ?></div>
         <?php } ?>
