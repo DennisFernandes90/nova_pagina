@@ -1,14 +1,12 @@
 <?php
     require_once("templates/header.php");
+
+    $currentPage = "Logar / Cadastrar";
 ?>
 
     
 
-        <div class="breadcrumbs">
-            <a href="index.html">Home</a>
-            <span>></span>
-            <span>Logar / Cadastrar</span>
-        </div>
+        <?php require_once("templates/breadcrumbs.php"); ?>
 
         <div class="forms-container">
 

@@ -21,15 +21,13 @@
             "texto" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci ea quaerat optio voluptas repellendus vitae eius numquam aliquid? Dolorem vero aliquid dolor earum molestiae soluta odio exercitationem debitis. Accusamus magnam enim nesciunt eveniet omnis dignissimos?"
         )
     );
+
+    $currentPage = $empresa[$categoria]["nome"];
 ?>
 
     
 
-        <div class="breadcrumbs">
-            <a href="<?= $BASE_URL ?>">Home</a>
-            <span>></span>
-            <span><?php echo $empresa[$categoria]["nome"]; ?></span>
-        </div>
+        <?php require_once("templates/breadcrumbs.php"); ?>
 
         <div class="texto">
             <h1><?php echo $empresa[$categoria]["nome"]; ?></h1>

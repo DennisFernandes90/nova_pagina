@@ -1,14 +1,12 @@
 <?php
     require_once("templates/header.php");
+
+    $currentPage = "Fale Conosco";
 ?>
 
     
 
-        <div class="breadcrumbs">
-            <a href="index.html">Home</a>
-            <span>></span>
-            <span>Fale Conosco</span>
-        </div>
+        <?php require_once("templates/breadcrumbs.php"); ?>
 
         <form action="<?= $BASE_URL ?>process_fale_conosco.php" id="contact-us" method="POST">
             <h1>Fale Conosco</h1>
