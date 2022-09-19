@@ -108,14 +108,78 @@
 
             $user = $this->searchEmail($email);
 
-            if(password_verify($senha, $user->get_senha())){
-                return $user;
+            if($user){
+                
+                if(password_verify($senha, $user->get_senha())){
+                    return $user;
+                }else{
+                    $this->validation->setMessage("Usuário ou senha incorretos, por favor tente de novo.", "erro", "back");
+                }
             }else{
-                $this->validation->setMessage("Usuário ou senha incorretos, por favor tente de novo.", "erro", "back");
+                $this->validation->setMessage("Usuário não encontrado.", "erro", "back");
             }
 
 
+        }
 
+        //Recebe como argumento um id e procura no banco de dados por registros que contenham esse id
+        public function searchId($id){
+
+            $stmt = $this->conn->prepare("SELECT * FROM users WHERE id = :id");
+
+            $stmt->bindParam(":id", $id);
+
+            $stmt->execute();
+
+            if($stmt->rowCount() > 0){
+
+                $data = $stmt->fetch();
+                $user = $this->buildUser($data);
+
+                return $user;
+            }else{
+                return false;
+            }
+
+        }
+
+        //Recebe o id do usuário como parâmetro para realizar a atualização de dados cadastrais: Nome e sobrenome
+        public function updateUser(User $user){
+
+            $nome = $user->get_nome();
+            $sobrenome = $user->get_sobrenome();
+            $sexo = $user->get_sexo();
+            $id = $user->get_id();
+
+            $stmt = $this->conn->prepare("UPDATE users
+                SET nome = :nome, sobrenome = :sobrenome, sexo = :sexo
+                WHERE id = :id
+            ");
+
+            $stmt->bindParam(":nome", $nome);
+            $stmt->bindParam(":sobrenome", $sobrenome);
+            $stmt->bindParam(":sexo", $sexo);
+            $stmt->bindParam(":id", $id);
+
+            $stmt->execute();
+
+        }
+
+        //Recebe o id do usuário como parâmetro para realizar a atualização de dados cadastrais: Senha
+        public function updatePassword(User $user){
+
+            $senha = $user->get_senha();
+            $id = $user->get_id();
+
+            $stmt = $this->conn->prepare("UPDATE users
+                SET senha = :senha
+                WHERE id = :id
+            ");
+            
+            $stmt->bindParam(":senha", $senha);
+            $stmt->bindParam(":id", $id);
+
+            $stmt->execute();
 
         }
     }

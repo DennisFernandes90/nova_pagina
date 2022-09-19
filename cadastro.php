@@ -67,7 +67,7 @@
                     </div>
         
                     <div class="input-wrapper">
-                        <label for="sexo">Região: </label>
+                        <label for="sexo">Sexo: </label>
                         <select name="sexo" id="sexo">
         
                             <option value="" selected disabled>Selecione seu sexo</option>

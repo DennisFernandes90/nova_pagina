@@ -48,7 +48,7 @@
                 <?php if($userData){ ?>
                     <nav>
                         <ul class="lista-nav">
-                            <li><a href="#">Perfil - <?= $userData->get_nome() ?></a></li>
+                            <li><a href="<?= $BASE_URL ?>edit_profile.php">Perfil - <?= $userData->get_nome() ?></a></li>
                             <li><a href="<?= $BASE_URL ?>empresa.php?categoria=missao">Missão</a></li>
                             <li><a href="<?= $BASE_URL ?>empresa.php?categoria=visao">Visão</a></li>
                             <li><a href="<?= $BASE_URL ?>empresa.php?categoria=valores">Valores</a></li>

@@ -81,7 +81,7 @@
         //Métodos
 
         public function getFullName($user){
-            return $user->get_nome() . $user->get_sobrenome();
+            return $user->get_nome() ." " . $user->get_sobrenome();
         }
 
         public function generatePassword($password){
@@ -97,4 +97,6 @@
         public function setUserToSession(User $user);
         public function verifyUser();
         public function authenticateUser($email, $senha);
+        public function updateUser(User $user);
+        public function updatePassword(User $user);
     }
