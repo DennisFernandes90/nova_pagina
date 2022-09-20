@@ -5,12 +5,19 @@
     require_once("models/Validations.php");
     require_once("models/User.php");
     require_once("DAO/UserDAO.php");
+    require_once("models/Messages.php");
+    require_once("DAO/MessagesDAO.php");
+    
 
     $userDao = new UserDAO($conn, $BASE_URL);
+
+    $messagesDao = new MessagesDAO($conn, $BASE_URL);
 
     $validations = new Validations($BASE_URL);
     
     $resultMessage = $validations->getMessage();
+
+    $forumMessages = $messagesDao->getAllMessages();
 
     $validations->clearMessage();
 
@@ -23,6 +30,7 @@
 
 
     // print_r($_SESSION);
+    
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +60,7 @@
                             <li><a href="<?= $BASE_URL ?>empresa.php?categoria=missao">Missão</a></li>
                             <li><a href="<?= $BASE_URL ?>empresa.php?categoria=visao">Visão</a></li>
                             <li><a href="<?= $BASE_URL ?>empresa.php?categoria=valores">Valores</a></li>
-                            <li><a href="<?= $BASE_URL ?>fale_conosco.php">Fale Conosco</a></li>
+                            <li><a href="<?= $BASE_URL ?>forum.php">Fórum</a></li>
                             <li><a href="<?= $BASE_URL ?>logout.php">Sair</a></li>
                             <li id="burguer">&#9776;</li>
                         </ul>
@@ -64,7 +72,7 @@
                                 <li><a href="<?= $BASE_URL ?>empresa.php?categoria=missao">Missão</a></li>
                                 <li><a href="<?= $BASE_URL ?>empresa.php?categoria=visao">Visão</a></li>
                                 <li><a href="<?= $BASE_URL ?>empresa.php?categoria=valores">Valores</a></li>
-                                <li><a href="<?= $BASE_URL ?>fale_conosco.php">Fale Conosco</a></li>
+                                <li><a href="<?= $BASE_URL ?>forum.php">Fórum</a></li>
                                 <li id="burguer">&#9776;</li>
                             </ul>
                         </nav>

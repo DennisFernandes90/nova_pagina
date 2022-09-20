@@ -4,7 +4,7 @@ html, body{
 }
 
 html{
-    background-image: linear-gradient(to bottom, rgb(0, 0, 0), rgb(22, 21, 21), rgb(235, 228, 228));
+    background-image: linear-gradient(to bottom, rgb(0, 0, 0), rgb(22, 21, 21), rgb(185, 185, 185));
 }
 
 body{
@@ -98,6 +98,7 @@ nav{
 /* conteudo */
 
 .breadcrumbs{
+    margin-top: 10px;
     padding-top: 5px;
 }
 
@@ -146,6 +147,26 @@ nav{
     box-shadow: 2px 3px 10px black;
 }
 
+/* Comentários */
+
+.comment-box{
+    border-top: 2px solid rgb(235, 235, 235);
+}
+
+.comment{
+    border-bottom: 1px solid rgb(235, 235, 235);
+    margin-bottom: 20px;
+}
+.comentario{
+    margin-left: 50px;
+    
+    font-size: 1.2rem;
+}
+
+.data-publicacao{
+    text-align: right;
+    color: rgb(235, 235, 235);
+}
 
 /* Fazer o footer ficar colado no fundo */
 
@@ -210,6 +231,7 @@ footer{
 #form-btn{
     margin-top: 30px;
     margin-bottom: 10px;
+    font-weight: bold;
     width: auto;
     padding: 10px 15px;
     background: white;
@@ -336,7 +358,7 @@ footer{
         
     }
 
-    #form-login, #form-cadastro{
+    #form-login, #form-cadastro, #form-update-dados, #form-update-senha{
         width: 100%;
         
     }
