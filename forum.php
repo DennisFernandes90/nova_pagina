@@ -2,6 +2,8 @@
     require_once("templates/header.php");
 
     $currentPage = "Fórum de Perguntas";
+
+    $forumMessages = $messagesDao->getAllMessages();
 ?>
 
     
@@ -19,7 +21,7 @@
 
                 <div class="input-wrapper">
                     <label for="mensagem">Mensagem:</label>
-                    <textarea name="mensagem" id="mensagem" cols="30" rows="1" placeholder="Deixe aqui suas perguntas, críticas e sugestões" required></textarea>
+                    <textarea name="mensagem" id="mensagem" cols="30" rows="2" placeholder="Deixe aqui suas perguntas, críticas e sugestões" required></textarea>
                 </div>
 
                 <!-- <input type="button" value="Enviar" id="form-btn"> -->
@@ -29,7 +31,7 @@
 
         <?php }else{ ?>
 
-            <h2>Por favor, faça seu login ou cadastre-se para poder postar perguntas, <a href="<?= $BASE_URL ?>cadastro.php">clique aqui</a>.</h2>
+            <h2 id="forum-msg-title">Por favor, faça seu login ou cadastre-se para poder postar perguntas, <a href="<?= $BASE_URL ?>cadastro.php">clique aqui</a>.</h2>
         
         <?php } ?>
 

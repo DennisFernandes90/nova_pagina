@@ -1,10 +1,11 @@
 html, body{
     margin: 0;
     padding: 0;  
+    
 }
 
 html{
-    background-image: linear-gradient(to bottom, rgb(0, 0, 0), rgb(22, 21, 21), rgb(185, 185, 185));
+    background-image: linear-gradient(to bottom, rgb(80, 80, 80), rgb(21, 21, 21));
 }
 
 body{
@@ -17,7 +18,7 @@ body{
 /* barra de navegação */
 
 .header-container{
-    background-color: whitesmoke;
+    background-color: rgb(100, 100, 100);
     position: fixed;
     width: 100%;
     height: 70px;
@@ -36,11 +37,11 @@ header{
 .logo{
     height: 100%;
     width: 30%;
-    color: black;
+    color: white;
 }
 
 .logo a{
-    color: black;
+    color: white;
     text-decoration: none;
 }
 
@@ -64,11 +65,12 @@ nav{
 .lista-nav a{
     text-decoration: none;
     font-weight: bold;
-    color: black;      
+    color: white;
+    transition: .5s;      
 }
 
 .lista-nav a:hover{
-    color: rgb(100, 100, 100);
+    color: rgb(50, 50, 50);
 }
 
 /* mensagem de erro / sucesso */
@@ -147,32 +149,88 @@ nav{
     box-shadow: 2px 3px 10px black;
 }
 
+/* Forum */
+
+#forum-msg-title a{
+    color: white;
+}
+
 /* Comentários */
 
 .comment-box{
     border-top: 2px solid rgb(235, 235, 235);
+    
 }
 
 .comment{
-    border-bottom: 1px solid rgb(235, 235, 235);
-    margin-bottom: 20px;
-}
-.comentario{
-    margin-left: 50px;
     
-    font-size: 1.2rem;
+    background-color: rgb(21, 21, 21);
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+
+.comment-header h3{
+    margin-top: 5px;
+   
 }
 
 .data-publicacao{
     text-align: right;
     color: rgb(235, 235, 235);
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: .8rem; 
 }
 
-/* Fazer o footer ficar colado no fundo */
+.comentario{   
+    margin-top: 5px;
+    font-size: 1rem; 
+}
+
+.btn-edit{
+    border: none;
+    background-color: transparent;
+    color: #4287f5;
+    width: auto;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-edit:hover{
+    text-decoration: underline;
+}
+
+.btn-cancelar{
+    border: none;
+    background-color: transparent;
+    color: #f54242;
+    width: auto;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-cancelar:hover{
+    text-decoration: underline;
+}
+
+.edit-msg-box{
+    display: none;
+}
+
+
+/* Footer */
 
 .footer-container{
     height: 100px;
-    background-color: white;
+    background-color: transparent;
     width: 100%;
     position: relative;
     bottom: 0;
@@ -187,10 +245,11 @@ footer{
     margin: 0 auto;
     align-items: center;
     justify-content: center;
-    color: black;
+    color: white;
 }
 
 /* Formatação formulário */
+
 
 .forms-container{
     display: flex;

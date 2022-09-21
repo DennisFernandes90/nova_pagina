@@ -41,7 +41,7 @@
 
             $rows = [];
 
-            $stmt = $this->conn->query("SELECT u.nome, m.mensagem, m.inclusao FROM users  AS u INNER JOIN messages AS m ON  u.id = m.users_id");
+            $stmt = $this->conn->query("SELECT u.nome, m.id, m.mensagem, m.users_id, m.inclusao FROM users  AS u INNER JOIN messages AS m ON  u.id = m.users_id");
 
             $stmt->execute();
 

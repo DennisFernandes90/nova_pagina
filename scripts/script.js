@@ -54,4 +54,28 @@ $(document).ready(function(){
     });
 
     //----------------------------------------------------
+
+    //Comentários
+
+    $(".btn-edit").on('click', function(){
+        if($(this).hasClass("btn-edit")){
+            $(this).html("<ion-icon name='close-circle-outline'></ion-icon> Cancelar");
+            $(this).removeClass("btn-edit");
+            $(this).addClass("btn-cancelar");
+            $(this).parent().parent().find(">:first-child").hide();
+            $(this).parent().find(">:first-child").show();
+        }else{
+            $(this).html("<ion-icon name='create-outline'></ion-icon> Editar ");
+
+            $(this).addClass("btn-edit");
+            $(this).removeClass("btn-cancelar");
+
+            $(this).parent().parent().find(">:first-child").show();
+            $(this).parent().find(">:first-child").hide();
+        }
+
+        
+    });
+
+
 });

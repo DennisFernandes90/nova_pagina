@@ -17,7 +17,7 @@
     
     $resultMessage = $validations->getMessage();
 
-    $forumMessages = $messagesDao->getAllMessages();
+    
 
     $validations->clearMessage();
 
@@ -87,3 +87,5 @@
         <?php if($resultMessage != ""){ ?>
             <div class="msg-container <?= $resultMessage["type"] ?>"><?= $resultMessage["msg"] ?></div>
         <?php } ?>
+
+        
