@@ -20,8 +20,12 @@ body{
 .header-container{
     background-color: rgb(100, 100, 100);
     position: fixed;
+    z-index: 1;
     width: 100%;
     height: 70px;
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
 }
 
 header{
@@ -221,6 +225,20 @@ nav{
     text-decoration: underline;
 }
 
+.btn-deletar{
+    border: none;
+    background-color: transparent;
+    color: rgb(180, 180, 180);
+    width: auto;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-deletar:hover{
+    text-decoration: underline;
+}
+
 .edit-msg-box{
     display: none;
 }
@@ -229,23 +247,62 @@ nav{
 /* Footer */
 
 .footer-container{
-    height: 100px;
+    min-height: 100px;
     background-color: transparent;
     width: 100%;
     position: relative;
     bottom: 0;
     left: 0;
-    
+    margin-top: 50px;
 }
 
 footer{
     display: flex;
+    flex-direction: column;
     max-width: 1024px;
-    height: 100px;
+    min-height: 100px;
     margin: 0 auto;
     align-items: center;
     justify-content: center;
     color: white;
+}
+
+.socials-container{
+    
+    display: flex;
+    justify-content: space-between;
+    width: 20%;
+    
+    padding: 25px;
+}
+
+.socials-container a{
+    color: white;
+    transition: .5s;
+}
+
+.socials-container #facebook:hover{
+    color: #0E8EF2;
+    
+}
+
+.socials-container #instagram:hover{
+    color: #F70166;
+    
+}
+
+.socials-container #youtube:hover{
+    color: red;
+    
+}
+
+.socials-container ion-icon{
+    font-size: 25px;
+}
+
+#copyright{
+    
+    margin-bottom: 50px;
 }
 
 /* Formatação formulário */
@@ -305,6 +362,10 @@ footer{
 #form-btn:hover{
     background-color: rgb(200, 200, 200);
     transition-duration: 1s;
+}
+
+.delete-form-box{
+    display: inline-block;
 }
 
 
@@ -420,6 +481,10 @@ footer{
     #form-login, #form-cadastro, #form-update-dados, #form-update-senha{
         width: 100%;
         
+    }
+
+    .socials-container{
+        width: 50%;
     }
 }
 

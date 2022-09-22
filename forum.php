@@ -18,6 +18,7 @@
             <form action="<?= $BASE_URL ?>forum_process.php" id="contact-us" method="POST">
 
                 <input type="hidden" name="id" value="<?= $userData->get_id() ?>">
+                <input type="hidden" name="type" value="post_msg">
 
                 <div class="input-wrapper">
                     <label for="mensagem">Mensagem:</label>

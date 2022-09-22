@@ -19,6 +19,20 @@
 
         }
 
+        //Recebe os dados do POST e retorna um objeto do tipo Message
+        public function buildMessage($data){
+
+            $message = new Messages();
+
+            $message->set_id($data["id"]);
+            $message->set_mensagem($data["mensagem"]);
+            $message->set_users_id($data["users_id"]);
+            $message->set_inclusao($data["inclusao"]);
+
+            return $message;
+
+        }
+
         //Recebe como argumento dois objetos: mensagem e usuário, salva a mensagem e o id em variáveis e insere a mensagem no banco de dados
         public function createMessage(Messages $msg, User $user){
 
@@ -58,6 +72,52 @@
                 return false;
             }
 
+        }
+
+        public function searchMessageById($id){
+
+            $stmt = $this->conn->prepare("SELECT * FROM messages WHERE id = :id");
+
+            $stmt->bindParam(":id", $id);
+
+            $stmt->execute();
+
+            if($stmt->rowCount() > 0){
+                
+                $data = $stmt->fetch();
+
+                $message = $this->buildMessage($data);
+
+                return $message;
+
+            }else{
+                return false;
+            }
+
+        }
+
+        public function updateMessage(Messages $msg){
+
+            $id = $msg->get_id();
+            $mensagem = $msg->get_mensagem();
+
+            $stmt = $this->conn->prepare("UPDATE messages SET mensagem = :mensagem WHERE id = :id");
+
+            $stmt->bindParam(":mensagem", $mensagem);
+            $stmt->bindParam(":id", $id);
+
+            $stmt->execute();
+        }
+
+        public function deleteMessage(Messages $msg){
+
+            $id = $msg->get_id();
+
+            $stmt = $this->conn->prepare("DELETE FROM messages WHERE id = :id");
+
+            $stmt->bindParam(":id", $id);
+
+            $stmt->execute();
         }
 
     }

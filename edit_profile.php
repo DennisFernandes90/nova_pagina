@@ -4,8 +4,13 @@
     if(!$userData){
         $validations->setMessage("Favor, fazer o login para acessar", "erro");
     }
+
+    $currentPage = "Perfil - " . $userData->get_nome();
 ?>
 
+    <?php
+        require_once("templates/breadcrumbs.php");
+    ?>
     <div class="forms-container">
         
         <div id="form-update-dados">

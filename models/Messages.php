@@ -44,7 +44,11 @@
 
     interface MessagesDAOInterface{
 
+        public function buildMessage($data);
         public function createMessage(Messages $msg, User $user);
         public function getAllMessages();
+        public function searchMessageById($id);
+        public function updateMessage(Messages $msg);
+        public function deleteMessage(Messages $msg);
 
     }

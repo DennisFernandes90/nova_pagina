@@ -24,9 +24,9 @@
 
                     <div class="edit-msg-box" id="<?= $row["id"] ?>">
                         
-                        <form action="#" method="POST">
+                        <form action="<?= $BASE_URL ?>forum_process.php" method="POST">
                     
-                            <input type="hidden" name="type" value="edit">
+                            <input type="hidden" name="type" value="update">
                             <input type="hidden" name="id" value="<?= $row["id"] ?>">
                     
                             <div class="input-wrapper">
@@ -43,10 +43,20 @@
                         <ion-icon name="create-outline"></ion-icon> Editar  
                     </button>
                     
+                    <!-- Form para apagar post -->
+
+                    <div class="delete-form-box">
+
+                        <form action="<?= $BASE_URL ?>forum_process.php" method="POST">
     
-                    <span class="delete">   
-                        <ion-icon name="trash-outline"></ion-icon> Excluir
-                    </span>
+                            <input type="hidden" name="type" value="delete">
+                            <input type="hidden" name="id" value="<?= $row["id"] ?>">
+    
+                            <button class="btn-deletar"><ion-icon name="trash-outline"></ion-icon> Excluir</button>
+                    
+                        </form>
+                    </div>
+                    
                 </div>
 
                 
