@@ -17,20 +17,11 @@
     
     $resultMessage = $validations->getMessage();
 
-    
-
     $validations->clearMessage();
 
+    //verifica se existe uma variavel de sessão user e monta um objeto a partir dela
     $userData = $userDao->verifyUser();
 
-    // if($_SESSION["user"] != ""){
-
-    //     $userData = $userDao->searchEmail($_SESSION["user"]);
-    // }
-
-
-    // print_r($_SESSION);
-    
 ?>
 
 <!DOCTYPE html>

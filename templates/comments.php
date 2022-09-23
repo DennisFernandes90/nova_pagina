@@ -56,13 +56,45 @@
                     
                         </form>
                     </div>
+
                     
                 </div>
+                
+                
+                
+                <?php } ?>
 
-                
-                
-            <?php } ?>
-        <?php } ?>
+                <div class="ratings-form-box">
+
+                    <div class="like-form-box">
+
+                        <form action="#" method="POST">
+
+                            <input type="hidden" name="type" value="like">
+                            <input type="hidden" name="messages_id" value="<?= $row["id"] ?>">
+                            <input type="hidden" name="users_id" value="<?= $row["users_id"] ?>">
+
+                            <button class="rate-btn like-btn"><ion-icon name="thumbs-up-sharp"></ion-icon> 99 </button>
+
+                        </form>
+                        
+                    </div>
+
+                    <div class="dislike-form-box">
+
+                        <form action="#" method="POST">
+
+                            <input type="hidden" name="type" value="dislike">
+                            <input type="hidden" name="messages_id" value="<?= $row["id"] ?>">
+                            <input type="hidden" name="users_id" value="<?= $row["users_id"] ?>">
+
+                            <button class="rate-btn dislike-btn"><ion-icon name="thumbs-down-sharp"></ion-icon> 99 </button>
+
+                        </form>
+                    </div>
+                </div>
+
+                <?php } ?>
 
     </div>
 

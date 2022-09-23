@@ -50,7 +50,6 @@
                     </select>
                 </div>
     
-                <!-- <input type="button" value="Cadastrar" id="form-btn"> -->
                 <button id="form-btn">Atualizar Dados</button>
                 
             </form>

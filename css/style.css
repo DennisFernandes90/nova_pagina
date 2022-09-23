@@ -365,7 +365,33 @@ footer{
 }
 
 .delete-form-box{
-    display: inline-block;
+    display: inline-block;  
+}
+
+.ratings-form-box{
+    display: flex;
+    margin-top: 10px;
+    
+}
+
+.like-form-box{
+    margin-right: 10px;
+}
+
+.rate-btn{
+    border: none;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.like-btn:hover{
+    color: #4287f5;
+}
+
+.dislike-btn:hover{
+    color: #f54242;
 }
 
 
