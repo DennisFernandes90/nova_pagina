@@ -51,3 +51,11 @@
         }
 
     }
+
+    interface RatingsDAOInterface {
+        public function create_rating(Ratings $rate);
+        public function buildRating($data);
+        public function verifyUserRating($messages_id, $users_id);
+        public function sumLikes($messages_id);
+        public function sumDislikes($messages_id);
+    }

@@ -1,5 +1,8 @@
 <?php
     require_once("templates/header.php");
+    require_once("DAO/RatingsDAO.php");
+
+    $ratingsDao = new RatingsDAO($conn, $BASE_URL);
 
     $currentPage = "Fórum de Perguntas";
 
