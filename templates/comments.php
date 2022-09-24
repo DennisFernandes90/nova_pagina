@@ -72,7 +72,7 @@
                     ?>
 
                     <?php if($ratingExists){ ?>
-
+                        <!-- UPDATE -->
                         <div class="like-form-box">
 
                             <form action="<?= $BASE_URL ?>forum_process.php" method="POST">
@@ -105,7 +105,8 @@
                         </div>
 
                     <?php }else{ ?>
-
+                        
+                        <!-- INSERT -->
                         <div class="like-form-box">
 
                             <form action="<?= $BASE_URL ?>forum_process.php" method="POST">

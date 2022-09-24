@@ -155,9 +155,54 @@
 
     }else if($type === "update-like"){
 
+        $messages_id = filter_input(INPUT_POST, "messages_id");
+        $users_id = filter_input(INPUT_POST, "users_id");
+
+        $rating = $ratingsDao->verifyUserRating($messages_id, $users_id);
+
+        if($rating->get_likes() == "1"){
+
+            $ratingsDao->deleteRating($rating);
+
+        }else{
+
+            $like = filter_input(INPUT_POST, "like");
+            $dislike = filter_input(INPUT_POST, "dislike");
+
+            $rating->set_likes($like);
+            $rating->set_dislikes($dislike);
+
+            $ratingsDao->updateRatings($rating);
+
+        }
+
+        header("Location: " . $_SERVER["HTTP_REFERER"]);
         
 
     }else if($type === "update-dislike"){
+
+        $messages_id = filter_input(INPUT_POST, "messages_id");
+        $users_id = filter_input(INPUT_POST, "users_id");
+
+        $rating = $ratingsDao->verifyUserRating($messages_id, $users_id);
+
+        if($rating->get_dislikes() == "1"){
+
+            $ratingsDao->deleteRating($rating);
+
+        }else{
+
+            $like = filter_input(INPUT_POST, "like");
+            $dislike = filter_input(INPUT_POST, "dislike");
+
+            $rating->set_likes($like);
+            $rating->set_dislikes($dislike);
+
+            $ratingsDao->updateRatings($rating);
+
+        }
+
+        header("Location: " . $_SERVER["HTTP_REFERER"]);
 
     }
 

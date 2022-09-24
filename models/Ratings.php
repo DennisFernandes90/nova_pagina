@@ -58,4 +58,6 @@
         public function verifyUserRating($messages_id, $users_id);
         public function sumLikes($messages_id);
         public function sumDislikes($messages_id);
+        public function updateRatings(Ratings $rate);
+        public function deleteRating(Ratings $rate);
     }

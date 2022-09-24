@@ -75,8 +75,6 @@
 
         public function sumLikes($messages_id){
 
-            //$sumLikes = 0;
-
             $stmt = $this->conn->prepare("SELECT SUM(likes) FROM ratings WHERE messages_id = :messages_id");
 
             $stmt->bindParam(":messages_id", $messages_id);
@@ -110,9 +108,37 @@
             }else{
                 return 0;
             }
-    
-
          
+        }
+
+        public function updateRatings(Ratings $rate){
+
+            $likes = $rate->get_likes();
+            $dislikes = $rate->get_dislikes();
+            $messages_id = $rate->get_messages_id();
+
+            $stmt = $this->conn->prepare("UPDATE ratings SET likes = :likes, dislikes = :dislikes WHERE messages_id = :messages_id");
+
+            $stmt->bindParam(":likes", $likes);
+            $stmt->bindParam(":dislikes", $dislikes);
+            $stmt->bindParam(":messages_id", $messages_id);
+
+            $stmt->execute();
+
+        }
+
+        public function deleteRating(Ratings $rate){
+
+            $messages_id = $rate->get_messages_id();
+            $users_id = $rate->get_users_id();
+
+            $stmt = $this->conn->prepare("DELETE FROM ratings WHERE messages_id = :messages_id AND users_id = :users_id");
+
+            $stmt->bindParam(":messages_id", $messages_id);
+            $stmt->bindParam(":users_id", $users_id);
+
+            $stmt->execute();
+
         }
 
     }
