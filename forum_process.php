@@ -160,23 +160,27 @@
 
         $rating = $ratingsDao->verifyUserRating($messages_id, $users_id);
 
-        if($rating->get_likes() == "1"){
+        if($rating){
 
-            $ratingsDao->deleteRating($rating);
-
-        }else{
-
-            $like = filter_input(INPUT_POST, "like");
-            $dislike = filter_input(INPUT_POST, "dislike");
-
-            $rating->set_likes($like);
-            $rating->set_dislikes($dislike);
-
-            $ratingsDao->updateRatings($rating);
-
+            if($rating->get_likes() == "1"){
+    
+                $ratingsDao->deleteRating($rating);
+    
+            }else{
+    
+                $like = filter_input(INPUT_POST, "like");
+                $dislike = filter_input(INPUT_POST, "dislike");
+    
+                $rating->set_likes($like);
+                $rating->set_dislikes($dislike);
+    
+                $ratingsDao->updateRatings($rating);
+    
+            }
+    
+            header("Location: " . $_SERVER["HTTP_REFERER"]);
         }
 
-        header("Location: " . $_SERVER["HTTP_REFERER"]);
         
 
     }else if($type === "update-dislike"){
@@ -186,23 +190,27 @@
 
         $rating = $ratingsDao->verifyUserRating($messages_id, $users_id);
 
-        if($rating->get_dislikes() == "1"){
+        if($rating){
 
-            $ratingsDao->deleteRating($rating);
-
-        }else{
-
-            $like = filter_input(INPUT_POST, "like");
-            $dislike = filter_input(INPUT_POST, "dislike");
-
-            $rating->set_likes($like);
-            $rating->set_dislikes($dislike);
-
-            $ratingsDao->updateRatings($rating);
-
+            if($rating->get_dislikes() == "1"){
+    
+                $ratingsDao->deleteRating($rating);
+    
+            }else{
+    
+                $like = filter_input(INPUT_POST, "like");
+                $dislike = filter_input(INPUT_POST, "dislike");
+    
+                $rating->set_likes($like);
+                $rating->set_dislikes($dislike);
+    
+                $ratingsDao->updateRatings($rating);
+    
+            }
+    
+            header("Location: " . $_SERVER["HTTP_REFERER"]);
         }
 
-        header("Location: " . $_SERVER["HTTP_REFERER"]);
 
     }
 

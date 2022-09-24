@@ -116,12 +116,14 @@
             $likes = $rate->get_likes();
             $dislikes = $rate->get_dislikes();
             $messages_id = $rate->get_messages_id();
+            $users_id = $rate->get_users_id();
 
-            $stmt = $this->conn->prepare("UPDATE ratings SET likes = :likes, dislikes = :dislikes WHERE messages_id = :messages_id");
+            $stmt = $this->conn->prepare("UPDATE ratings SET likes = :likes, dislikes = :dislikes WHERE messages_id = :messages_id AND users_id = :users_id");
 
             $stmt->bindParam(":likes", $likes);
             $stmt->bindParam(":dislikes", $dislikes);
             $stmt->bindParam(":messages_id", $messages_id);
+            $stmt->bindParam(":users_id", $users_id);
 
             $stmt->execute();
 
