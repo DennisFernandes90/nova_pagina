@@ -51,6 +51,7 @@
     
                             <input type="hidden" name="type" value="delete">
                             <input type="hidden" name="id" value="<?= $row["id"] ?>">
+                            <input type="hidden" name="users_id" value="<?= $userData->get_id() ?>">
     
                             <button class="btn-deletar"><ion-icon name="trash-outline"></ion-icon> Excluir</button>
                     

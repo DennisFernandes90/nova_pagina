@@ -92,6 +92,8 @@
             $messageData = $messagesDao->searchMessageById($id);
 
             if($messageData){
+
+                $ratingsDao->deleteRatingById($id);
                 
                 $messagesDao->deleteMessage($messageData);
 

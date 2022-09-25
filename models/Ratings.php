@@ -60,4 +60,5 @@
         public function sumDislikes($messages_id);
         public function updateRatings(Ratings $rate);
         public function deleteRating(Ratings $rate);
+        public function deleteRatingById($messages_id);
     }

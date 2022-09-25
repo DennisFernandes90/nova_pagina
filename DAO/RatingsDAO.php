@@ -143,4 +143,15 @@
 
         }
 
+        public function deleteRatingById($messages_id){
+
+            $stmt = $this->conn->prepare("DELETE FROM ratings WHERE messages_id = :messages_id");
+
+            $stmt->bindParam(":messages_id", $messages_id);
+            
+
+            $stmt->execute();
+
+        }
+
     }
