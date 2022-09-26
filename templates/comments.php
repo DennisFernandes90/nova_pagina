@@ -76,7 +76,7 @@
                         <!-- UPDATE -->
                         <div class="like-form-box">
 
-                            <form action="<?= $BASE_URL ?>forum_process.php" method="POST">
+                            <form id ="update-like-form" action="<?= $BASE_URL ?>forum_process.php" method="POST">
 
                                 <input type="hidden" name="type" value="update-like">
                                 <input type="hidden" name="like" value="1">
@@ -90,7 +90,7 @@
                             
                         </div>
 
-                        <div class="dislike-form-box">
+                        <div id ="update-dislike-form" class="dislike-form-box">
 
                             <form action="<?= $BASE_URL ?>forum_process.php" method="POST">
 
@@ -110,7 +110,7 @@
                         <!-- INSERT -->
                         <div class="like-form-box">
 
-                            <form action="<?= $BASE_URL ?>forum_process.php" method="POST">
+                            <form id ="like-form" action="<?= $BASE_URL ?>forum_process.php" method="POST">
 
                                 <input type="hidden" name="type" value="like">
                                 <input type="hidden" name="like" value="1">
@@ -126,7 +126,7 @@
 
                         <div class="dislike-form-box">
 
-                            <form action="<?= $BASE_URL ?>forum_process.php" method="POST">
+                            <form id ="dislike-form" action="<?= $BASE_URL ?>forum_process.php" method="POST">
 
                                 <input type="hidden" name="type" value="dislike">
                                 <input type="hidden" name="like" value="0">
