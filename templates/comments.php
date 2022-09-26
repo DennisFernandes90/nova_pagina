@@ -118,7 +118,7 @@
                                 <input type="hidden" name="messages_id" value="<?= $row["id"] ?>">
                                 <input type="hidden" name="users_id" value="<?= $userData->get_id() ?>">
 
-                                <button  type="submit" class="rate-btn like-btn" onclick = "like();"><ion-icon name="thumbs-up-sharp"></ion-icon> <?= $ratingsDao->sumLikes($row["id"]) ?> </button>
+                                <button class="rate-btn like-btn" onclick = "like();"><ion-icon name="thumbs-up-sharp"></ion-icon> <?= $ratingsDao->sumLikes($row["id"]) ?> </button>
 
                             </form>
                             
