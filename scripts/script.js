@@ -77,5 +77,46 @@ $(document).ready(function(){
         
     });
 
+    //----------------------------------------------------
+
+    //Ajax do formulário de like
+
+    //Prevenindo o envio ou refresh da pagina
+
+    var form = document.getElementsByClassName("like-form");
+
+    function handleForm(event) { event.preventDefault(); }
+
+    for (var i = 0; i < form.length; i++){
+        form[i].addEventListener('submit', handleForm);
+    }
+
+
+    // $(".rate-btn").click(function(event){
+    //     event.preventDefault();
+    // });
+    
+
+    //Função
+
+    function like(){
+
+        $.ajax({
+            //action
+            url: "forum_process.php",
+            //method
+            type: "POST",
+            data: {
+                //Pegar valores
+                like: $("input[name=like]").val(),
+                dislike: $("input[name=dislike]").val(),
+                messages_id: $("input[name=messages_id]").val(),
+                users_id: $("input[name=users_id]").val(),
+                action: "like"
+            }
+        });
+
+    }
+
 
 });

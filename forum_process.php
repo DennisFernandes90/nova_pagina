@@ -105,31 +105,35 @@
 
         }
 
-
-    }else if($type === "like"){
+    // ----------------------------------- Avaliações de comentários -----------------------------------
+    }else if($_POST["action"] == "like"){
+        
+        like();
 
         //print_r($_POST); exit;
 
-        $like = filter_input(INPUT_POST, "like");
-        $dislike = filter_input(INPUT_POST, "dislike");
-        $messages_id = filter_input(INPUT_POST, "messages_id");
-        $users_id = filter_input(INPUT_POST, "users_id");
+        function like(){
 
-        $rating = new Ratings();
+            $like = filter_input(INPUT_POST, "like");
+            $dislike = filter_input(INPUT_POST, "dislike");
+            $messages_id = filter_input(INPUT_POST, "messages_id");
+            $users_id = filter_input(INPUT_POST, "users_id");
+    
+            $rating = new Ratings();
+    
+            $rating->set_likes($like);
+            $rating->set_dislikes($dislike);
+            $rating->set_messages_id($messages_id);
+    
+            $user = $userDao->searchId($users_id);
+    
+            $rating->set_users_id($user->get_id());
+    
+            $ratingsDao->create_rating($rating);
+    
+            $validations->setMessage("Avaliação contabilizada", "sucesso", "back");
+        }
 
-        $rating->set_likes($like);
-        $rating->set_dislikes($dislike);
-        $rating->set_messages_id($messages_id);
-
-        $user = $userDao->searchId($users_id);
-
-        $rating->set_users_id($user->get_id());
-
-        //print_r($rating); exit;
-
-        $ratingsDao->create_rating($rating);
-
-        $validations->setMessage("Avaliação contabilizada", "sucesso", "back");
 
 
     }else if($type === "dislike"){
