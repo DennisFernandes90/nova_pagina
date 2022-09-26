@@ -92,11 +92,6 @@ $(document).ready(function(){
     }
 
 
-    // $(".rate-btn").click(function(event){
-    //     event.preventDefault();
-    // });
-    
-
     //Função
 
     function like(){
