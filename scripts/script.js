@@ -91,15 +91,28 @@ $(document).ready(function(){
         var dislike = $(this).parent().find(":nth-child(3)").val();
         var messages_id = $(this).parent().find(":nth-child(4)").val();
         var users_id = $(this).parent().find(":nth-child(5)").val();
-        var formData = {type: type, like: like, dislike: dislike, messages_id: messages_id, users_id: users_id};
-        // alert(messages_id);
+        var count_likes = $(this).parent().find(":nth-child(6)").val();
+        var count_likes = parseInt(count_likes) + 1;
+        var post_id = $(this).parent().find(":nth-child(7)").val();
+        var formData = {type: type, 
+            like: like, 
+            dislike: dislike, 
+            messages_id: messages_id, 
+            users_id: users_id, 
+            count_likes: count_likes,
+            post_id: post_id
+        };
+        // alert(count_likes);
 
         $.ajax({
             url: "forum_process.php",
             type: "POST",
             data: formData,
-            success: function(){
-                window.location.reload();
+            dataType: "json",
+            success: function(response){
+                
+                console.log(response);
+                
             }
         });
     });
@@ -114,16 +127,27 @@ $(document).ready(function(){
         var dislike = $(this).parent().find(":nth-child(3)").val();
         var messages_id = $(this).parent().find(":nth-child(4)").val();
         var users_id = $(this).parent().find(":nth-child(5)").val();
-        var formData = {type: type, like: like, dislike: dislike, messages_id: messages_id, users_id: users_id};
+        var count_dislikes = $(this).parent().find(":nth-child(6)").val();
+        var count_dislikes = parseInt(count_dislikes) + 1;
+        var post_id = $(this).parent().find(":nth-child(7)").val();
+        var formData = {type: type,
+            like: like,
+            dislike: dislike, 
+            messages_id: messages_id, 
+            users_id: users_id, 
+            count_dislikes: count_dislikes,
+            post_id: post_id
+        };
         // alert(messages_id);
 
         $.ajax({
             url: "forum_process.php",
             type: "POST",
             data: formData,
-            success: function(){
-                //$(".teste").val("teste");
-                window.location.reload();
+            dataType: "json",
+            success: function(response){
+                
+                console.log(response);
             }
         });
     });

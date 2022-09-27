@@ -2,6 +2,7 @@
 
 
     require_once("globals.php");
+    header("Content-Type: application/json");
     require_once("db.php");
     require_once("models/Validations.php");
     require_once("models/Ratings.php");
@@ -126,6 +127,8 @@
         $rating->set_users_id($user->get_id());
 
         $ratingsDao->create_rating($rating);
+
+        echo json_encode("sucesso");
 
         // $validations->setMessage("Avaliação contabilizada", "sucesso", "back");
         
