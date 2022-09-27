@@ -83,35 +83,39 @@ $(document).ready(function(){
 
     //Prevenindo o envio ou refresh da pagina
 
-    var form = document.getElementsByClassName("like-form");
+    // var form = document.getElementsByClassName("like-form");
 
-    function handleForm(event) { event.preventDefault(); }
+    // function handleForm(event) { event.preventDefault(); }
 
-    for (var i = 0; i < form.length; i++){
-        form[i].addEventListener('submit', handleForm);
-    }
+    // for (var i = 0; i < form.length; i++){
+    //     form[i].addEventListener('submit', handleForm);
+    // }
 
 
     //Função
 
-    function like(){
+    $(".like-btn").click(function(){
+        //alert("botao clicaco");
+
+        var type = $(this).parent().find(":nth-child(1)").val();
+        var like = $(this).parent().find(":nth-child(2)").val();
+        var dislike = $(this).parent().find(":nth-child(3)").val();
+        var messages_id = $(this).parent().find(":nth-child(4)").val();
+        var users_id = $(this).parent().find(":nth-child(5)").val();
+        var formData = {type: type, like: like, dislike: dislike, messages_id: messages_id, users_id: users_id};
+        // alert(users_id);
 
         $.ajax({
-            //action
-            url: "forum_process.php",
-            //method
+            url: "http://localhost/dennis/nova_pagina/forum_process.php",
             type: "POST",
-            data: {
-                //Pegar valores
-                like: $("input[name=like]").val(),
-                dislike: $("input[name=dislike]").val(),
-                messages_id: $("input[name=messages_id]").val(),
-                users_id: $("input[name=users_id]").val(),
-                action: "like"
+            data: formData,
+            success: function(response){
+
             }
         });
+    });
 
-    }
+    
 
 
 });

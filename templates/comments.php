@@ -84,7 +84,7 @@
                                 <input type="hidden" name="messages_id" value="<?= $row["id"] ?>">
                                 <input type="hidden" name="users_id" value="<?= $userData->get_id()  ?>">
 
-                                <button class="rate-btn like-btn <?= ($ratingExists->get_likes() == 1) ? "liked" : "" ?>"><ion-icon name="thumbs-up-sharp"></ion-icon> <?= $ratingsDao->sumLikes($row["id"]) ?> </button>
+                                <button class="rate-btn update-like-btn <?= ($ratingExists->get_likes() == 1) ? "liked" : "" ?>"><ion-icon name="thumbs-up-sharp"></ion-icon> <?= $ratingsDao->sumLikes($row["id"]) ?> </button>
 
                             </form>
                             
@@ -110,7 +110,7 @@
                         <!-- INSERT -->
                         <div class="like-form-box">
 
-                            <form class="like-form" action="<?= $BASE_URL ?>forum_process.php" method="POST">
+                            <form class="like-form" action="" method="POST">
 
                                 <input type="hidden" name="type" value="like">
                                 <input type="hidden" name="like" value="1">
@@ -118,8 +118,9 @@
                                 <input type="hidden" name="messages_id" value="<?= $row["id"] ?>">
                                 <input type="hidden" name="users_id" value="<?= $userData->get_id() ?>">
 
-                                <button class="rate-btn like-btn" onclick = "like();"><ion-icon name="thumbs-up-sharp"></ion-icon> <?= $ratingsDao->sumLikes($row["id"]) ?> </button>
+                                <button type="button" class="rate-btn like-btn" name="like-btn"><ion-icon name="thumbs-up-sharp"></ion-icon> <?= $ratingsDao->sumLikes($row["id"]) ?> </button>
 
+                                
                             </form>
                             
                         </div>
@@ -149,3 +150,4 @@
 
     
 </div>
+
