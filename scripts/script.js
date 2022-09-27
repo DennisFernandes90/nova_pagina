@@ -81,18 +81,7 @@ $(document).ready(function(){
 
     //Ajax do formulário de like
 
-    //Prevenindo o envio ou refresh da pagina
-
-    // var form = document.getElementsByClassName("like-form");
-
-    // function handleForm(event) { event.preventDefault(); }
-
-    // for (var i = 0; i < form.length; i++){
-    //     form[i].addEventListener('submit', handleForm);
-    // }
-
-
-    //Função
+    //Função like
 
     $(".like-btn").click(function(){
         //alert("botao clicaco");
@@ -103,17 +92,44 @@ $(document).ready(function(){
         var messages_id = $(this).parent().find(":nth-child(4)").val();
         var users_id = $(this).parent().find(":nth-child(5)").val();
         var formData = {type: type, like: like, dislike: dislike, messages_id: messages_id, users_id: users_id};
-        // alert(users_id);
+        // alert(messages_id);
 
         $.ajax({
-            url: "http://localhost/dennis/nova_pagina/forum_process.php",
+            url: "forum_process.php",
             type: "POST",
             data: formData,
-            success: function(response){
-
+            success: function(){
+                window.location.reload();
             }
         });
     });
+
+    //Função dislike
+
+    $(".dislike-btn").click(function(){
+        //alert("botao clicaco");
+
+        var type = $(this).parent().find(":nth-child(1)").val();
+        var like = $(this).parent().find(":nth-child(2)").val();
+        var dislike = $(this).parent().find(":nth-child(3)").val();
+        var messages_id = $(this).parent().find(":nth-child(4)").val();
+        var users_id = $(this).parent().find(":nth-child(5)").val();
+        var formData = {type: type, like: like, dislike: dislike, messages_id: messages_id, users_id: users_id};
+        // alert(messages_id);
+
+        $.ajax({
+            url: "forum_process.php",
+            type: "POST",
+            data: formData,
+            success: function(){
+                //$(".teste").val("teste");
+                window.location.reload();
+            }
+        });
+    });
+
+
+    
 
     
 

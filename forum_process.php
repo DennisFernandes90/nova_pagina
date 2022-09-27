@@ -115,8 +115,6 @@
         $messages_id = filter_input(INPUT_POST, "messages_id");
         $users_id = filter_input(INPUT_POST, "users_id");
 
-        
-
         $rating = new Ratings();
 
         $rating->set_likes($like);
@@ -129,7 +127,7 @@
 
         $ratingsDao->create_rating($rating);
 
-        $validations->setMessage("Avaliação contabilizada", "sucesso", "back");
+        // $validations->setMessage("Avaliação contabilizada", "sucesso", "back");
         
 
     }else if($type === "dislike"){
@@ -153,7 +151,7 @@
 
         $ratingsDao->create_rating($rating);
 
-        $validations->setMessage("Avaliação contabilizada", "sucesso", "back");
+        // $validations->setMessage("Avaliação contabilizada", "sucesso", "back");
 
     }else if($type === "update-like"){
 
@@ -180,7 +178,7 @@
     
             }
     
-            header("Location: " . $_SERVER["HTTP_REFERER"]);
+            
         }
 
         
@@ -210,7 +208,7 @@
     
             }
     
-            header("Location: " . $_SERVER["HTTP_REFERER"]);
+            
         }
 
 

@@ -46,13 +46,13 @@
 
                 <p>Ainda não existem comentários...</p>
             
-            <?php }else{ ?>
+            <?php }else{ $n = 0; 
                 
-                <?php foreach($forumMessages as $row){ ?>
-                    <?php require("templates/comments.php"); ?>
-                <?php  } ?>
+                 foreach($forumMessages as $row){ $n++;
+                    require("templates/comments.php"); 
+                }
 
-            <?php } ?>
+             } ?>
             
 
         </div>
