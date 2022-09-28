@@ -86,7 +86,12 @@ $(document).ready(function(){
     $(".like-btn").click(function(){
         //alert("botao clicaco");
 
-        var type = $(this).parent().find(":nth-child(1)").val();
+        if($(this).hasClass("liked")){
+            var type = "update-like";
+        }else{
+            var type = "like";
+        }
+
         var like = $(this).parent().find(":nth-child(2)").val();
         var dislike = $(this).parent().find(":nth-child(3)").val();
         var messages_id = $(this).parent().find(":nth-child(4)").val();
@@ -94,7 +99,8 @@ $(document).ready(function(){
         var count_likes = $(this).parent().find(":nth-child(6)").val();
         var count_likes = parseInt(count_likes) + 1;
         var post_id = $(this).parent().find(":nth-child(7)").val();
-        var formData = {type: type, 
+        var formData = {
+            type: type, 
             like: like, 
             dislike: dislike, 
             messages_id: messages_id, 
@@ -110,7 +116,9 @@ $(document).ready(function(){
             data: formData,
             dataType: "json",
             success: function(response){
-                
+
+                $("#" + response[2]).html(response[1]);
+                $("#mensagem").val(response[1]);
                 console.log(response);
                 
             }
@@ -122,7 +130,13 @@ $(document).ready(function(){
     $(".dislike-btn").click(function(){
         //alert("botao clicaco");
 
-        var type = $(this).parent().find(":nth-child(1)").val();
+        if($(this).hasClass("disliked")){
+            
+            var type = "update-dislike";
+        }else{
+            var type = "dislike";
+        }
+
         var like = $(this).parent().find(":nth-child(2)").val();
         var dislike = $(this).parent().find(":nth-child(3)").val();
         var messages_id = $(this).parent().find(":nth-child(4)").val();
@@ -130,7 +144,8 @@ $(document).ready(function(){
         var count_dislikes = $(this).parent().find(":nth-child(6)").val();
         var count_dislikes = parseInt(count_dislikes) + 1;
         var post_id = $(this).parent().find(":nth-child(7)").val();
-        var formData = {type: type,
+        var formData = {
+            type: type,
             like: like,
             dislike: dislike, 
             messages_id: messages_id, 

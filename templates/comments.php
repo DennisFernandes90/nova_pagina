@@ -63,7 +63,7 @@
                 
                 
                 
-                <?php } ?>
+            <?php } ?>
 
                 <div class="ratings-form-box">
 
@@ -72,44 +72,7 @@
                         //print_r($ratingExists);
                     ?>
 
-                    <?php if($ratingExists){ ?>
-                        <!-- UPDATE -->
-                        <div class="like-form-box">
-
-                            <form class="update-like-form" action="" method="POST">
-
-                                <input type="hidden" name="type" value="update-like">
-                                <input type="hidden" name="like" value="1">
-                                <input type="hidden" name="dislike" value="0">
-                                <input type="hidden" name="messages_id" value="<?= $row["id"] ?>">
-                                <input type="hidden" name="users_id" value="<?= $userData->get_id()  ?>">
-                                <input type="hidden" name="count_likes" value="<?= $ratingsDao->sumLikes($row["id"])  ?>">
-                                <input type="hidden" name="post_id" value="<?= $n ?>">
-
-                                <button type="button" class="rate-btn like-btn <?= ($ratingExists->get_likes() == 1) ? "liked" : "" ?>"><ion-icon name="thumbs-up-sharp"></ion-icon> <span id="<?= "teste" . $n ?>"><?= $ratingsDao->sumLikes($row["id"]) ?></span> </button>
-
-                            </form>
-                            
-                        </div>
-
-                        <div class="dislike-form-box">
-
-                            <form class="update-dislike-form" action="" method="POST">
-
-                                <input type="hidden" name="type" value="update-dislike">
-                                <input type="hidden" name="like" value="0">
-                                <input type="hidden" name="dislike" value="1">
-                                <input type="hidden" name="messages_id" value="<?= $row["id"] ?>">
-                                <input type="hidden" name="users_id" value="<?= $userData->get_id()  ?>">
-                                <input type="hidden" name="count_dislikes" value="<?= $ratingsDao->sumDislikes($row["id"])  ?>">
-                                <input type="hidden" name="post_id" value="<?= $n ?>">
-
-                                <button type="button" class="rate-btn dislike-btn <?= ($ratingExists->get_dislikes() == 1) ? "disliked" : "" ?>"><ion-icon name="thumbs-down-sharp"></ion-icon> <span id="<?= "teste" . $n ?>"><?= $ratingsDao->sumDislikes($row["id"]) ?></span> </button>
-
-                            </form>
-                        </div>
-
-                    <?php }else{ ?>
+                    
                         
                         <!-- INSERT -->
                         <div class="like-form-box">
@@ -122,9 +85,9 @@
                                 <input type="hidden" name="messages_id" value="<?= $row["id"] ?>">
                                 <input type="hidden" name="users_id" value="<?= $userData->get_id() ?>">
                                 <input type="hidden" name="count_likes" value="<?= $ratingsDao->sumLikes($row["id"])  ?>">
-                                <input type="hidden" name="post_id" value="<?= $n ?>">
+                                <input type="hidden" name="post_id" value="<?= "teste" . $n ?>">
 
-                                <button type="button" class="rate-btn like-btn" name="like-btn"><ion-icon name="thumbs-up-sharp"></ion-icon> <span id="<?= "teste" . $n ?>"><?= $ratingsDao->sumLikes($row["id"]) ?></span> </button>
+                                <button type="button" class="rate-btn like-btn <?= ($ratingExists && $ratingExists->get_likes() == 1) ? "liked" : "" ?>" name="like-btn"><ion-icon name="thumbs-up-sharp"></ion-icon> <span id="<?= "teste" . $n ?>"><?= $ratingsDao->sumLikes($row["id"]) ?></span> </button>
 
                                 
                             </form>
@@ -143,14 +106,14 @@
                                 <input type="hidden" name="count_dislikes" value="<?= $ratingsDao->sumDislikes($row["id"])  ?>">
                                 <input type="hidden" name="post_id" value="<?= $n ?>">
 
-                                <button type="button" class="rate-btn dislike-btn"><ion-icon name="thumbs-down-sharp"></ion-icon> <span id="<?= "teste" . $n ?>"><?= $ratingsDao->sumDislikes($row["id"]) ?></span> </button>
+                                <button type="button" class="rate-btn dislike-btn <?= ($ratingExists && $ratingExists->get_dislikes() == 1) ? "disliked" : "" ?>"><ion-icon name="thumbs-down-sharp"></ion-icon> <span id="<?= "teste" . $n ?>"><?= $ratingsDao->sumDislikes($row["id"]) ?></span> </button>
 
                             </form>
                         </div>
-                    <?php } ?>
+                    
                 </div>
 
-                <?php } ?>
+        <?php } ?>
 
     </div>
 

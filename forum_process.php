@@ -115,6 +115,7 @@
         $dislike = filter_input(INPUT_POST, "dislike");
         $messages_id = filter_input(INPUT_POST, "messages_id");
         $users_id = filter_input(INPUT_POST, "users_id");
+        $post_id = filter_input(INPUT_POST, "post_id");
 
         $rating = new Ratings();
 
@@ -128,7 +129,11 @@
 
         $ratingsDao->create_rating($rating);
 
-        echo json_encode("sucesso");
+        $somaLikes = $ratingsDao->sumLikes($messages_id);
+
+        echo json_encode([
+            "liked", $somaLikes, $post_id
+        ]);
 
         // $validations->setMessage("Avaliação contabilizada", "sucesso", "back");
         
@@ -165,7 +170,7 @@
 
         if($rating){
 
-            if($rating->get_likes() == "1"){
+            if($rating->get_likes() == "1" || $rating->get_getlikes() == "1"){
     
                 $ratingsDao->deleteRating($rating);
     
@@ -195,7 +200,7 @@
 
         if($rating){
 
-            if($rating->get_dislikes() == "1"){
+            if($rating->get_dislikes() == "1" || $rating->get_likes() == "1"){
     
                 $ratingsDao->deleteRating($rating);
     
