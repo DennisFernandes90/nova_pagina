@@ -86,7 +86,7 @@ $(document).ready(function(){
     $(".like-btn").click(function(){
         //alert("botao clicaco");
 
-        if($(this).hasClass("liked")){
+        if($(this).hasClass("liked") || $(this).parent().siblings(".dislike-form").find(":nth-child(9)").hasClass("disliked")){
             var type = "update-like";
         }else{
             var type = "like";
@@ -111,7 +111,6 @@ $(document).ready(function(){
             post_id: post_id,
             dislike_id: dislike_id
         };
-        // alert(count_likes);
 
         $.ajax({
             url: "forum_process.php",
@@ -122,13 +121,24 @@ $(document).ready(function(){
 
                 $("#" + response[2]).html(response[1]);
                 $("#" + response[6]).html(response[5]);
+               
 
                 if(response[3] == "vote"){
-
-                    $("#" + response[2]).parent().addClass(response[0]);
-                }else{
                     
-                    $("#" + response[2]).parent().removeClass(response[0]);
+                    $("#" + response[2]).parent().addClass(response[0]);
+                    
+                }else{
+                    // se for um update
+                    if($("#" + response[2]).parent().hasClass(response[0])){
+
+                        $("#" + response[2]).parent().removeClass(response[0]);
+                        
+                    }else{
+                        $("#" + response[2]).parent().addClass(response[0]);
+
+                        $("#" + response[6]).parent().removeClass(response[4]);
+                    }
+                    
                 }
                 
                 console.log(response);
@@ -144,7 +154,7 @@ $(document).ready(function(){
     $(".dislike-btn").click(function(){
         //alert("botao clicaco");
 
-        if($(this).hasClass("disliked")){
+        if($(this).hasClass("disliked") || $(this).parent().siblings(".like-form").find(":nth-child(9)").hasClass("liked")){
             
             var type = "update-dislike";
         }else{
@@ -179,12 +189,22 @@ $(document).ready(function(){
             success: function(response){
 
                 $("#" + response[2]).html(response[1]);
+                $("#" + response[6]).html(response[5]);
 
                 if(response[3] == "vote"){
 
                     $("#" + response[2]).parent().addClass(response[0]);
                 }else{
-                    $("#" + response[2]).parent().removeClass(response[0]);
+                    // se for um update
+                    if($("#" + response[2]).parent().hasClass(response[0])){
+
+                        $("#" + response[2]).parent().removeClass(response[0]);
+                        
+                    }else{
+                        $("#" + response[2]).parent().addClass(response[0]);
+
+                        $("#" + response[6]).parent().removeClass(response[4]);
+                    }
                 }
                 
                 console.log(response);

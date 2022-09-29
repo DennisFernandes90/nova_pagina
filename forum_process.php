@@ -116,6 +116,7 @@
         $messages_id = filter_input(INPUT_POST, "messages_id");
         $users_id = filter_input(INPUT_POST, "users_id");
         $post_id = filter_input(INPUT_POST, "post_id");
+        $dislike_id = filter_input(INPUT_POST, "dislike_id");
 
         $type = filter_input(INPUT_POST, "type");
 
@@ -131,10 +132,13 @@
 
         $ratingsDao->create_rating($rating);
 
+        
+
         $somaLikes = $ratingsDao->sumLikes($messages_id);
+        $somaDislikes = $ratingsDao->sumDislikes($messages_id);
 
         echo json_encode([
-            "liked", $somaLikes, $post_id, "vote"
+            "liked", $somaLikes, $post_id, "vote", "disliked", $somaDislikes, $dislike_id
         ]);
 
         // $validations->setMessage("Avaliação contabilizada", "sucesso", "back");
@@ -149,6 +153,7 @@
         $messages_id = filter_input(INPUT_POST, "messages_id");
         $users_id = filter_input(INPUT_POST, "users_id");
         $post_id = filter_input(INPUT_POST, "post_id");
+        $like_id = filter_input(INPUT_POST, "like_id");
         
 
         $type = filter_input(INPUT_POST, "type");
@@ -165,10 +170,11 @@
 
         $ratingsDao->create_rating($rating);
 
+        $somaLikes = $ratingsDao->sumLikes($messages_id);
         $somaDislikes = $ratingsDao->sumDislikes($messages_id);
 
         echo json_encode([
-            "disliked", $somaDislikes, $post_id, "vote"
+            "disliked", $somaDislikes, $post_id, "vote", "liked", $somaLikes, $like_id
         ]);
 
         // $validations->setMessage("Avaliação contabilizada", "sucesso", "back");
@@ -240,7 +246,6 @@
             }
 
             $somaLikes = $ratingsDao->sumLikes($messages_id);
-
             $somaDislikes = $ratingsDao->sumDislikes($messages_id);
 
             echo json_encode([

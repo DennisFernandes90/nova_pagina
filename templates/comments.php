@@ -70,12 +70,13 @@
                     <?php
                         $ratingExists = $ratingsDao->verifyUserRating($row["id"], $userData->get_id());
                         //print_r($ratingExists);
+                        
                     ?>
 
                     
                         
-                        <!-- INSERT -->
-                        <div class="like-form-box">
+                        <!-- LIKE -->
+                        
 
                             <form class="like-form" action="" method="POST">
 
@@ -93,9 +94,7 @@
                                 
                             </form>
                             
-                        </div>
-
-                        <div class="dislike-form-box">
+                        <!-- DISLIKE -->
 
                             <form class="dislike-form" action="" method="POST">
 
@@ -111,7 +110,7 @@
                                 <button type="button" class="rate-btn dislike-btn <?= ($ratingExists && $ratingExists->get_dislikes() == 1) ? "disliked" : "" ?>"><ion-icon name="thumbs-down-sharp"></ion-icon> <span id="<?= "dislike" . $n ?>"><?= $ratingsDao->sumDislikes($row["id"]) ?></span> </button>
 
                             </form>
-                        </div>
+                        
                     
                 </div>
 
