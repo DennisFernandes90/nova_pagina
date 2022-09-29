@@ -79,7 +79,7 @@
 
                             <form class="like-form" action="" method="POST">
 
-                                <input type="hidden" name="type" value="like">
+                                <input type="hidden" name="type" value="<?= ($ratingExists && $ratingExists->get_likes() == 1) ? "update-like" : "like" ?>">
                                 <input type="hidden" name="like" value="1">
                                 <input type="hidden" name="dislike" value="0">
                                 <input type="hidden" name="messages_id" value="<?= $row["id"] ?>">

@@ -92,6 +92,7 @@ $(document).ready(function(){
             var type = "like";
         }
 
+        //var type = $(this).parent().find(":nth-child(1)").val();
         var like = $(this).parent().find(":nth-child(2)").val();
         var dislike = $(this).parent().find(":nth-child(3)").val();
         var messages_id = $(this).parent().find(":nth-child(4)").val();
@@ -118,8 +119,17 @@ $(document).ready(function(){
             success: function(response){
 
                 $("#" + response[2]).html(response[1]);
-                $("#mensagem").val(response[1]);
+
+                if(response[3] == "vote"){
+
+                    $("#" + response[2]).parent().addClass(response[0]);
+                }else{
+                    $("#" + response[2]).parent().removeClass(response[0]);
+                }
+                
                 console.log(response);
+
+                
                 
             }
         });
@@ -161,6 +171,15 @@ $(document).ready(function(){
             data: formData,
             dataType: "json",
             success: function(response){
+
+                $("#" + response[2]).html(response[1]);
+
+                if(response[3] == "vote"){
+
+                    $("#" + response[2]).parent().addClass(response[0]);
+                }else{
+                    $("#" + response[2]).parent().removeClass(response[0]);
+                }
                 
                 console.log(response);
             }
