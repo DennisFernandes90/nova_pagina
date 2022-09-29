@@ -100,6 +100,7 @@ $(document).ready(function(){
         var count_likes = $(this).parent().find(":nth-child(6)").val();
         var count_likes = parseInt(count_likes) + 1;
         var post_id = $(this).parent().find(":nth-child(7)").val();
+        var dislike_id = $(this).parent().find(":nth-child(8)").val();
         var formData = {
             type: type, 
             like: like, 
@@ -107,7 +108,8 @@ $(document).ready(function(){
             messages_id: messages_id, 
             users_id: users_id, 
             count_likes: count_likes,
-            post_id: post_id
+            post_id: post_id,
+            dislike_id: dislike_id
         };
         // alert(count_likes);
 
@@ -119,11 +121,13 @@ $(document).ready(function(){
             success: function(response){
 
                 $("#" + response[2]).html(response[1]);
+                $("#" + response[6]).html(response[5]);
 
                 if(response[3] == "vote"){
 
                     $("#" + response[2]).parent().addClass(response[0]);
                 }else{
+                    
                     $("#" + response[2]).parent().removeClass(response[0]);
                 }
                 
@@ -154,6 +158,7 @@ $(document).ready(function(){
         var count_dislikes = $(this).parent().find(":nth-child(6)").val();
         var count_dislikes = parseInt(count_dislikes) + 1;
         var post_id = $(this).parent().find(":nth-child(7)").val();
+        var like_id = $(this).parent().find(":nth-child(8)").val();
         var formData = {
             type: type,
             like: like,
@@ -161,7 +166,8 @@ $(document).ready(function(){
             messages_id: messages_id, 
             users_id: users_id, 
             count_dislikes: count_dislikes,
-            post_id: post_id
+            post_id: post_id,
+            like_id: like_id
         };
         // alert(messages_id);
 
