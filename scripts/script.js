@@ -55,7 +55,7 @@ $(document).ready(function(){
 
     //----------------------------------------------------
 
-    //Comentários
+    //Abre/ fecha a seção de edição de comentários
 
     $(".btn-edit").on('click', function(){
         if($(this).hasClass("btn-edit")){
@@ -86,6 +86,7 @@ $(document).ready(function(){
     $(".like-btn").click(function(){
         //alert("botao clicaco");
 
+        //verifica se o botão de like tem a classe like ou o botão de dislike tem a classe dislike
         if($(this).hasClass("liked") || $(this).parent().siblings(".dislike-form").find(":nth-child(9)").hasClass("disliked")){
             var type = "update-like";
         }else{

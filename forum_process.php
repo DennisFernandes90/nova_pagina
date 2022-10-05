@@ -132,8 +132,6 @@
 
         $ratingsDao->create_rating($rating);
 
-        
-
         $somaLikes = $ratingsDao->sumLikes($messages_id);
         $somaDislikes = $ratingsDao->sumDislikes($messages_id);
 
